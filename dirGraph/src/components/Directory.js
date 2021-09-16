@@ -1,6 +1,6 @@
-import styled from "styled-components"
+import styled from "styled-components/native"
 
-const Directory = styled.view`
+const Directory = styled.View`
   padding-left: ${({ level }) => `${12 * level}px`};
 `;
 export default Directory
