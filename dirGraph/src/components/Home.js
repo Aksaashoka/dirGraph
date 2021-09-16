@@ -29,7 +29,7 @@ const Home = () => {
         {response.length ? 'Actualizar' : 'Explorar'}
       </Button>
       {response.map(item => (
-        <Drawer item={item} />
+        <Drawer key={item.name} item={item} />
       ))}
     </View>
   );
@@ -46,10 +46,10 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   pagina: {
-    display: 'flex',
     justifyContent: 'flex-start',
     padding: 10,
     backgroundColor: '#ffff',
+    flex:1
   },
   btn: {
     padding: 10,

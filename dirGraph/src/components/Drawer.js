@@ -4,6 +4,7 @@ import { List,} from 'react-native-paper'
 import File from "./File"
 
   const Drawer = ({ item, level = 0 }) => {
+    const  marginLeft = level*10 
     return (
       <List.Accordion
       title={item.name}
@@ -11,13 +12,12 @@ import File from "./File"
       left={props => <List.Icon {...props} icon="folder" />}
       >
 
-          {/* <Text>{`${item.type}---${item.name}`}</Text> */}
         {item.files.map((nodeOrLeaf) =>(
             <>
               {nodeOrLeaf.type === "directory" && (
-                <Drawer item={nodeOrLeaf} level={level + 1} />
+                <Drawer style={{marginLeft}} key={nodeOrLeaf.name} item={nodeOrLeaf} level={level + 1} />
               )}
-              {nodeOrLeaf.type === "file" && <File style={styles.archive}file={nodeOrLeaf} />}
+              {nodeOrLeaf.type === "file" && <File key={nodeOrLeaf.name} style={styles.archive}file={nodeOrLeaf} />}
             </>
           ))}
       </List.Accordion>)
@@ -25,8 +25,6 @@ import File from "./File"
 
   const styles = StyleSheet.create({
     dir: {
-      // marginTop:10,
-      // marginBottom:5,
     backgroundColor: "#E7E7E7"    
 },
     archive:{
