@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Text, View,StyleSheet, Image} from 'react-native';
+import {Text, View, StyleSheet, Image} from 'react-native';
 import {peticion} from '../utils/Peticion';
 import Drawer from './Drawer';
 import {Button, TextInput} from 'react-native-paper';
@@ -18,10 +18,14 @@ const Home = () => {
 
   return (
     <View style={styles.pagina}>
-      <Image style={styles.header}source={require("../assets/Logo.png")}/>
+      <Image style={styles.header} source={require('../assets/Logo.png')} />
       <Text style={styles.title}>Ingrese su Link debajo</Text>
       <TextInput onChangeText={handleChange} value={mainUrl} />
-      <Button style={styles.btn} onPress={handleClick} mode="outlined">
+      <Button
+        style={styles.btn}
+        onPress={handleClick}
+        mode="outlined"
+        disabled={!mainUrl}>
         {response.length ? 'Actualizar' : 'Explorar'}
       </Button>
       {response.map(item => (
@@ -31,30 +35,28 @@ const Home = () => {
   );
 };
 
-const styles= StyleSheet.create({
-  header:{
-    resizeMode:"contain",
-    maxWidth:400
+const styles = StyleSheet.create({
+  header: {
+    resizeMode: 'contain',
+    maxWidth: 400,
   },
-  title:{
-    fontSize:24,
-    textAlign:"center",
-    padding:10 
-   },
-  pagina:{
-    display:"flex",
-    justifyContent:"flex-start",
-    padding:10,
-    backgroundColor:"white"
+  title: {
+    fontSize: 24,
+    textAlign: 'center',
+    padding: 10,
   },
-  btn:{
-    padding:10,
-    marginVertical:10,
-    minWidth:200,
-  alignSelf:"center" 
-}
-  
-
-})
+  pagina: {
+    display: 'flex',
+    justifyContent: 'flex-start',
+    padding: 10,
+    backgroundColor: '#ffff',
+  },
+  btn: {
+    padding: 10,
+    marginVertical: 10,
+    minWidth: 200,
+    alignSelf: 'center',
+  },
+});
 
 export default Home;

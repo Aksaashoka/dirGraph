@@ -1,7 +1,6 @@
 import React from 'react'
-import { StyleSheet} from 'react-native'
-import { List } from 'react-native-paper'
-import Directory from "./Directory"
+import {StyleSheet} from 'react-native'
+import { List,} from 'react-native-paper'
 import File from "./File"
 
   const Drawer = ({ item, level = 0 }) => {
@@ -9,9 +8,10 @@ import File from "./File"
       <List.Accordion
       title={item.name}
       style={styles.dir}
-      left={props => <List.Icon {...props} icon="folder" />}>
+      left={props => <List.Icon {...props} icon="folder" />}
+      >
 
-        {/* <Text>{`${item.type}---${item.name}`}</Text> */}
+          {/* <Text>{`${item.type}---${item.name}`}</Text> */}
         {item.files.map((nodeOrLeaf) =>(
             <>
               {nodeOrLeaf.type === "directory" && (
@@ -25,8 +25,8 @@ import File from "./File"
 
   const styles = StyleSheet.create({
     dir: {
-      marginTop:10,
-      marginBottom:5,
+      // marginTop:10,
+      // marginBottom:5,
     backgroundColor: "#E7E7E7"    
 },
     archive:{
