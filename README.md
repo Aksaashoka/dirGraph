@@ -1,6 +1,7 @@
 # dirGraph
 
-_Acá va un párrafo que describa lo que es el proyecto_
+dirGraph es un proyecto que nos permite visualizar un menu de carpetas que describe el contenido de un archivo JSON obtenido desde la URL ingresada en el Input.
+
 
 ## Comenzando 
 
@@ -27,6 +28,5 @@ _Menciona las herramientas que utilizaste para crear tu proyecto_
 * [Axios](https://github.com/axios/axios) - Cliente http para javascript promise-based.
 
 ## Autores ✒️
-
 
 * **Alan Diaz** 
