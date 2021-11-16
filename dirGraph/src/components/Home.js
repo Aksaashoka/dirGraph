@@ -1,19 +1,19 @@
 import React, {useState} from 'react';
 import {Text, View, StyleSheet, Image} from 'react-native';
-import {peticion} from '../utils/Peticion';
+import {peticion} from '../utils/peticion';
 import Drawer from './Drawer';
 import {Button, TextInput} from 'react-native-paper';
 
 const Home = () => {
-  const [mainUrl, setmainUrl] = useState('');
-  const [response, setresponse] = useState([]);
+  const [mainUrl, setMainUrl] = useState('');
+  const [response, setResponse] = useState([]);
   const handleChange = text => {
-    setmainUrl(text);
+    setMainUrl(text);
   };
 
   const handleClick = async () => {
-    let data = await peticion(mainUrl);
-    setresponse(data);
+    const data = await peticion(mainUrl);
+    setResponse(data);
   };
 
   return (
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     padding: 10,
     backgroundColor: '#ffff',
-    flex:1
+    flex: 1,
   },
   btn: {
     padding: 10,
