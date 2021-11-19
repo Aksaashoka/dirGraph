@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 import {List} from 'react-native-paper';
 import File from './File';
 
-const Drawer = ({item, level = 0}) => {
+const Directory = ({item, level = 0}) => {
   const marginLeft = level * 10;
   return (
     <List.Accordion
@@ -13,7 +13,7 @@ const Drawer = ({item, level = 0}) => {
       {item.files?.map(nodeOrLeaf => (
         <>
           {nodeOrLeaf.type === 'directory' && (
-            <Drawer
+            <Directory
               style={{marginLeft}}
               key={nodeOrLeaf.name}
               item={nodeOrLeaf}
@@ -39,8 +39,8 @@ const styles = StyleSheet.create({
   },
   archive: {
     backgroundColor: '#E7E7E7',
-    paddingLeft: 10
-  }
+    paddingLeft: 10,
+  },
 });
 
-export default Drawer;
+export default Directory;

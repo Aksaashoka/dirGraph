@@ -1,29 +1,45 @@
 import React, {useState} from 'react';
 import {StyleSheet} from 'react-native';
-import {Button, TextInput} from 'react-native-paper';
+import {ActivityIndicator, Button, TextInput} from 'react-native-paper';
 import {peticion} from '../utils/Peticion';
+import {validateUrl} from '../utils/validateUrl';
+import Error from './Error';
 
 const Search = ({navigation}) => {
   const [mainUrl, setMainUrl] = useState('');
-  const [response, setResponse] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const handleChange = text => {
     setMainUrl(text);
   };
-  const handleClick = async () => {
-    const data = await peticion(mainUrl);
-    setResponse(data);
-    navigation.navigate('Detail', {content: data});
+  const handleClick = () => {
+    setLoading(true);
+    if (validateUrl(mainUrl)) {
+      peticion(mainUrl).then(
+        data => {
+          setError(false);
+          setLoading(false);
+          navigation.navigate('Detail', {content: data});
+        },
+        error => {
+          setError(true);
+          setLoading(false);
+          console.error('Función de rechazo llamada: ', error);
+        },
+      );
+    } else {
+      setLoading(false);
+      setError(true);
+    }
   };
   return (
     <>
       <TextInput onChangeText={handleChange} value={mainUrl} />
-      <Button
-        style={styles.btn}
-        onPress={handleClick}
-        mode="outlined"
-        disabled={!mainUrl}>
+      {loading && <ActivityIndicator />}
+      <Button style={styles.btn} onPress={handleClick} mode="outlined">
         vamo
       </Button>
+      {error && <Error />}
     </>
   );
 };

@@ -1,11 +1,14 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import Directory from '../components/Directory';
 
 export default function Detail({route}) {
   const {content} = route.params;
   return (
     <View>
-      <Text style={styles.prueba}> {JSON.stringify(content)}</Text>
+      {content?.map(item => (
+        <Directory key={item.name} item={item} />
+      ))}
     </View>
   );
 }
