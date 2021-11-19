@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Text, View, StyleSheet, Image} from 'react-native';
-import {peticion} from '../utils/peticion';
+import {peticion} from '../utils/Peticion';
 import Drawer from './Drawer';
 import {Button, TextInput} from 'react-native-paper';
 
